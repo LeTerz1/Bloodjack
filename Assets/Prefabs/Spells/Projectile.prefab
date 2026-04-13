@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 123585709583877445}
   - component: {fileID: 8455442527005030274}
   m_Layer: 0
-  m_Name: FirstSpell
+  m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -2,20 +2,29 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour, IDamageable
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public float maxHealth = 100;
+    private float currentHealth;
+
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        currentHealth = maxHealth;
     }
 
     public void TakeDamage(float amount)
     {
-        Debug.Log("Enemy prend " + amount + " dégâts");
+        currentHealth -= amount;
+
+        Debug.Log("PV restants : " + currentHealth);
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        Debug.Log("Enemy mort");
+        Destroy(gameObject);
     }
 }

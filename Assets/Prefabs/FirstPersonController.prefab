@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4459864850019384737}
   - component: {fileID: 4459864850019384741}
   - component: {fileID: 4459864850019384740}
-  - component: {fileID: 5623153235215569477}
+  - component: {fileID: 2424256359786455741}
   m_Layer: 0
   m_Name: FirstPersonController
   m_TagString: Player
@@ -197,7 +197,7 @@ MonoBehaviour:
   joint: {fileID: 4459864851508666808}
   bobSpeed: 10
   bobAmount: {x: 0, y: 0.1, z: 0}
---- !u!114 &5623153235215569477
+--- !u!114 &2424256359786455741
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -206,12 +206,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4459864850019384750}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a639145ccb51ec541b202415093e1f0a, type: 3}
+  m_Script: {fileID: 11500000, guid: 6d53fe41aa83fb645ae736c90edcac92, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CastSpell
-  spells:
-  - {fileID: 6608794748350677980, guid: cb974bc6cdff35547b51fa0757b89de8, type: 3}
-  firePoint: {fileID: 5514684539798448059}
+  m_EditorClassIdentifier: Assembly-CSharp::SpellCaster
+  spellSlots:
+  - {fileID: 11400000, guid: f520687035b88b54da0ff5ab8db16205, type: 2}
+  currentMana: 100
+  castPoint: {fileID: 5514684539798448059}
 --- !u!1 &4459864850190357393
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,5 +15,6 @@ MonoBehaviour:
   spellName: 
   manaCost: 0
   cooldown: 0
-  prefab: {fileID: 0}
-  speed: 0
+  projectilePrefab: {fileID: 6608794748350677980, guid: cb974bc6cdff35547b51fa0757b89de8, type: 3}
+  speed: 5
+  damage: 1

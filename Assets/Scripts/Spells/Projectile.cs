@@ -1,12 +1,19 @@
 using UnityEngine;
 
-public class FirstSpell : MonoBehaviour
+public class Projectile : MonoBehaviour
 {
-    public float speed = 10f;
+    private float speed;
+    private float damage;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         previousPosition = transform.position;
+    }
+
+    public void Init(float projectileSpeed, float projectileDamage)
+    {
+        speed = projectileSpeed;
+        damage = projectileDamage;
     }
 
 
@@ -22,7 +29,7 @@ public class FirstSpell : MonoBehaviour
 
             if (damageable != null)
             {
-                damageable.TakeDamage(10);
+                damageable.TakeDamage(damage);
             }
 
             // Dans tous les cas, on détruit à l’impact

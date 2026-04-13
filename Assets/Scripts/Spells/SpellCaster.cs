@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SpellCaster : MonoBehaviour
 {
@@ -24,10 +25,10 @@ public class SpellCaster : MonoBehaviour
         }
 
         // Input exemple
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Mouse.current.leftButton.isPressed)
             TryCast(0);
 
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Mouse.current.rightButton.isPressed)
             TryCast(1);
     }
 
