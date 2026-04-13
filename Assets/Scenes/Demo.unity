@@ -3679,6 +3679,7 @@ GameObject:
   - component: {fileID: 1205087890}
   - component: {fileID: 1205087889}
   - component: {fileID: 1205087888}
+  - component: {fileID: 1205087893}
   m_Layer: 0
   m_Name: Stairs
   m_TagString: Untagged
@@ -3780,6 +3781,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 841781652}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1205087893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205087887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 587f0680ec8058b41b7acefe63f855da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
 --- !u!43 &1326660435
 Mesh:
   m_ObjectHideFlags: 0
