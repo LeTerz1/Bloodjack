@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4459864850019384741}
   - component: {fileID: 4459864850019384740}
   - component: {fileID: 2424256359786455741}
+  - component: {fileID: 7540401513131877552}
   m_Layer: 0
   m_Name: FirstPersonController
   m_TagString: Player
@@ -215,6 +216,21 @@ MonoBehaviour:
   currentMana: 100
   castPoint: {fileID: 5514684539798448059}
   playerCamera: {fileID: 4459864851310106426}
+--- !u!114 &7540401513131877552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4459864850019384750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a06216721eb8b1a4c8ab3a7966396586, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RaycastDetector
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &4459864850190357393
 GameObject:
   m_ObjectHideFlags: 0
