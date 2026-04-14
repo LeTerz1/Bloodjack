@@ -7,9 +7,13 @@ public class Fireball : Spell
     public float speed;
     public float damage;
 
-    public override void Cast(Transform castPoint)
+    public override void Cast(Transform castPoint, Vector3 targetPoint)
     {
-        GameObject proj = Instantiate(projectilePrefab, castPoint.position, castPoint.rotation);
+        Vector3 direction = (targetPoint - castPoint.position).normalized;
+
+        GameObject proj = Instantiate(projectilePrefab, castPoint.position, Quaternion.identity);
+        proj.transform.forward = direction;
+        proj.transform.rotation = Quaternion.LookRotation(direction);
 
         var projectile = proj.GetComponent<Projectile>();
         projectile.Init(speed, damage);

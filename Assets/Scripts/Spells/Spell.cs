@@ -1,5 +1,12 @@
 using UnityEngine;
 
+
+public enum CastMode
+{
+    Single, // clic unique
+    Hold    // maintien
+}
+
 [CreateAssetMenu(fileName = "Spell", menuName = "Scriptable Objects/Spell")]
 public abstract class Spell : ScriptableObject
 {
@@ -7,5 +14,7 @@ public abstract class Spell : ScriptableObject
     public float manaCost;
     public float cooldown;
 
-    public abstract void Cast(Transform castPoint);
+    public CastMode castMode;
+
+    public abstract void Cast(Transform castPoint, Vector3 targetPoint);
 }
