@@ -1,22 +1,33 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class RaycastDetector : MonoBehaviour
 {
     private Camera playerCamera;
     private EnemyHealth currentTarget;
-    [SerializeField] private LayerMask targetMask;
+
+    public float detectionRange = 100f;
+
+    [SerializeField] private List<LayerToRenderingLayer> layerMappings;
+
+    private Dictionary<int, uint> layerToRenderingMask = new();
 
     void Awake()
     {
         playerCamera = GetComponent<SpellCaster>().playerCamera;
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
+
+        // Convertit en dictionnaire pour lookup rapide
+        foreach (var mapping in layerMappings)
+        {
+            int layer = GetLayerFromMask(mapping.physicsLayer);
+            uint mask = (uint)(1 << mapping.renderingLayerIndex);
+
+            if (!layerToRenderingMask.ContainsKey(layer))
+                layerToRenderingMask.Add(layer, mask);
+        }
+
     }
 
-    // Update is called once per frame
     void Update()
     {
         DetectEnemy();
@@ -27,28 +38,55 @@ public class RaycastDetector : MonoBehaviour
         Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
 
         EnemyHealth newTarget = null;
+        uint newMask = 0;
 
-        if (Physics.Raycast(ray, out RaycastHit hit, 100f, targetMask))
+        if (Physics.Raycast(ray, out RaycastHit hit, detectionRange))
         {
-            newTarget = hit.collider.GetComponent<EnemyHealth>();
+            int hitLayer = hit.collider.gameObject.layer;
+
+            if (layerToRenderingMask.TryGetValue(hitLayer, out uint mask))
+            {
+                newTarget = hit.collider.GetComponent<EnemyHealth>();
+                newMask = mask;
+            }
         }
 
-        // rien changé = on sort
         if (newTarget == currentTarget)
             return;
 
-        // désactiver ancien
+        // enlever ancien
         if (currentTarget != null)
         {
-            currentTarget.outlineMaterial.enabled = false;
+            foreach (var r in currentTarget.GetComponentsInChildren<MeshRenderer>())
+            {
+                foreach (var mask in layerToRenderingMask.Values)
+                {
+                    r.renderingLayerMask &= ~mask;
+                }
+            }
         }
 
-        // activer nouveau
+        //  ajouter nouveau
         if (newTarget != null)
         {
-            newTarget.outlineMaterial.enabled = true;
+            foreach (var r in newTarget.GetComponentsInChildren<MeshRenderer>())
+            {
+                r.renderingLayerMask |= newMask;
+            }
         }
 
         currentTarget = newTarget;
+    }
+
+    //  récupère le layer depuis un LayerMask (1 seul layer attendu)
+    int GetLayerFromMask(LayerMask mask)
+    {
+        int value = mask.value;
+        for (int i = 0; i < 32; i++)
+        {
+            if ((value & (1 << i)) != 0)
+                return i;
+        }
+        return 0;
     }
 }
