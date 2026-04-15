@@ -7,7 +7,9 @@ public class SpellCaster : MonoBehaviour
     private float[] cooldownTimers;
     private bool[] isHolding;
 
-    public float currentMana = 100f;
+    private Mana mana;
+
+    //private float currentMana = 100f;
 
     public Transform castPoint;
     public Camera playerCamera;
@@ -23,6 +25,8 @@ public class SpellCaster : MonoBehaviour
 
         controls.Player.Spell1.started += ctx => StartCasting(1);
         controls.Player.Spell1.canceled += ctx => StopCasting(1);
+
+        mana = GetComponent<Mana>();
     }
 
     void OnEnable()
@@ -82,16 +86,16 @@ public class SpellCaster : MonoBehaviour
         }
             
 
-        if (currentMana < spell.manaCost)
+        if (mana.current < spell.manaCost)
         {
-            Debug.Log($"Not enough mana to cast {spell.spellName}. Current mana: {currentMana}");
+            Debug.Log($"Not enough mana to cast {spell.spellName}. Current mana: {mana.current}");
             return;
         }
 
         Vector3 target = GetAimPoint();
         spell.Cast(castPoint, target);
 
-        currentMana -= spell.manaCost;
+        mana.current -= spell.manaCost;
         cooldownTimers[index] = spell.cooldown;
     }
 

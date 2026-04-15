@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 1294066788889053815}
   - component: {fileID: 123585709583877445}
   - component: {fileID: 8455442527005030274}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,4 +157,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c90f6a880f071a640807a89567c8d81f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FirstSpell
-  speed: 10

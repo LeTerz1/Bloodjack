@@ -4,7 +4,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 {
     public float maxHealth = 100;
     private float currentHealth;
-
+    public string enemyName;
     void Start()
     {
         currentHealth = maxHealth;
@@ -26,5 +26,10 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     {
         Debug.Log("Enemy mort");
         Destroy(gameObject);
+    }
+
+    public float GetHealthPercent()
+    {
+        return currentHealth / maxHealth;
     }
 }

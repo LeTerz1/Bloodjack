@@ -7,6 +7,7 @@ public class RaycastDetector : MonoBehaviour
     private EnemyHealth currentTarget;
 
     public float detectionRange = 100f;
+    [SerializeField] private EnemyHealthUI enemyHealthUI;
 
     [SerializeField] private List<LayerToRenderingLayer> layerMappings;
 
@@ -50,14 +51,18 @@ public class RaycastDetector : MonoBehaviour
                 newMask = mask;
             }
         }
+        
+        enemyHealthUI.SetTarget(newTarget);
 
         if (newTarget == currentTarget)
             return;
 
+        
+
         // enlever ancien
         if (currentTarget != null)
         {
-            foreach (var r in currentTarget.GetComponentsInChildren<MeshRenderer>())
+            foreach (var r in currentTarget.GetComponentsInChildren<Renderer>())
             {
                 foreach (var mask in layerToRenderingMask.Values)
                 {
@@ -66,10 +71,10 @@ public class RaycastDetector : MonoBehaviour
             }
         }
 
-        //  ajouter nouveau
+        // ajouter nouveau
         if (newTarget != null)
         {
-            foreach (var r in newTarget.GetComponentsInChildren<MeshRenderer>())
+            foreach (var r in newTarget.GetComponentsInChildren<Renderer>())
             {
                 r.renderingLayerMask |= newMask;
             }
