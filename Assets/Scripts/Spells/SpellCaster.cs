@@ -95,7 +95,7 @@ public class SpellCaster : MonoBehaviour
         Vector3 target = GetAimPoint();
         spell.Cast(castPoint, target);
 
-        mana.current -= spell.manaCost;
+        mana.ConsumeMana(spell.manaCost);
         cooldownTimers[index] = spell.cooldown;
     }
 

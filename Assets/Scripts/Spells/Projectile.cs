@@ -4,16 +4,24 @@ public class Projectile : MonoBehaviour
 {
     private float speed;
     private float damage;
+
+    private Mana playerMana;
+    private bool canRegenMana;
+    private float manaRegenAmount;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         previousPosition = transform.position;
     }
 
-    public void Init(float projectileSpeed, float projectileDamage)
+    public void Init(float projectileSpeed, float projectileDamage, Mana playerMana, bool canRegenMana, float manaRegenAmount)
     {
         speed = projectileSpeed;
         damage = projectileDamage;
+        this.playerMana = playerMana;
+        this.canRegenMana = canRegenMana;
+        this.manaRegenAmount = manaRegenAmount;
     }
 
 
@@ -30,6 +38,7 @@ public class Projectile : MonoBehaviour
             if (damageable != null)
             {
                 damageable.TakeDamage(damage);
+                OnHit(hit.point);
             }
 
             // Dans tous les cas, on détruit à l’impact
@@ -40,4 +49,11 @@ public class Projectile : MonoBehaviour
         previousPosition = transform.position;
     }
 
+    void OnHit(Vector3 hitVector3)
+    {
+        if (canRegenMana && playerMana != null)
+        {
+            playerMana.RegenerateMana(manaRegenAmount);
+        }
+    }
 }

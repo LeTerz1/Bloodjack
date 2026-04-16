@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Fireball
   m_EditorClassIdentifier: Assembly-CSharp::Fireball
   spellName: 
-  manaCost: 10
+  manaCost: 0
   cooldown: 0.5
   castMode: 1
   projectilePrefab: {fileID: 6608794748350677980, guid: cb974bc6cdff35547b51fa0757b89de8, type: 3}
   speed: 100
   damage: 20
+  HitRegenMana: 1
+  manaRegenAmount: 10

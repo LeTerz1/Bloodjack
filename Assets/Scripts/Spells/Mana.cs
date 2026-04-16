@@ -23,4 +23,14 @@ public class Mana : MonoBehaviour
     {
         fillImage.fillAmount = current / max;
     }
+
+    public void ConsumeMana(float amount)
+    {
+        current = Mathf.Max(current - amount, 0);
+    }
+
+    public void RegenerateMana(float amount)
+    {
+        current = Mathf.Min(current + amount, max);
+    }
 }
