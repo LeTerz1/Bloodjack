@@ -8,7 +8,11 @@ public class DamagePopup : MonoBehaviour
     public float lifeTime = 1f;
 
     private float timer;
-    
+
+    [Header("Scale Settings")]
+    public float baseScale = 1f;
+    public float scaleMultiplier = 0.1f;
+
     void Awake()
     {
         text = GetComponent<TextMeshPro>();
@@ -31,10 +35,21 @@ public class DamagePopup : MonoBehaviour
 
         if (timer >= lifeTime)
             Destroy(gameObject);
+
+        //UpdateScale();
     }
 
     private void LateUpdate()
     {
         transform.forward = Camera.main.transform.forward;
+    }
+
+    void UpdateScale()
+    {
+        float distance = Vector3.Distance(transform.position, Camera.main.transform.position);
+
+        float scale = baseScale + distance * scaleMultiplier;
+
+        transform.localScale = Vector3.one * scale;
     }
 }

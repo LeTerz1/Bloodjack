@@ -52,6 +52,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DamagePopup
   moveSpeed: 1
   lifeTime: 1
+  baseScale: 0.05
+  scaleMultiplier: 0.01
 --- !u!23 &5650422957975276062
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -97,7 +99,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -2076613267
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
