@@ -11,10 +11,17 @@ public enum CastMode
 public abstract class Spell : ScriptableObject
 {
     public string spellName;
+    public CastMode castMode;
     public float manaCost;
     public float cooldown;
 
-    public CastMode castMode;
+    [Header("Mana Gain")]
+    public bool HitRegenMana;
+    public float manaRegenAmount;
+
+    [Header("UI")]
+    public GameObject damagePopupPrefab;
+
 
     public abstract void Cast(Transform castPoint, Vector3 targetPoint);
 }

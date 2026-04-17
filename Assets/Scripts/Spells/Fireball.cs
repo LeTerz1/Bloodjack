@@ -3,25 +3,67 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Spells/Fireball")]
 public class Fireball : Spell
 {
-    public GameObject projectilePrefab;
+    private Mana playerMana;
+
+    [Header("Projectile Stats")]
     public float speed;
     public float damage;
 
-    [Header("Mana Gain")]
-    public bool HitRegenMana;
-    public float manaRegenAmount;
-
+    [Header("Visuals")]
+    public GameObject projectilePrefab;
+    public GameObject hitVfx;
 
     public override void Cast(Transform castPoint, Vector3 targetPoint)
     {
-        Mana playerMana = castPoint.GetComponentInParent<Mana>();
+        playerMana = castPoint.GetComponentInParent<Mana>();
         Vector3 direction = (targetPoint - castPoint.position).normalized;
 
         GameObject proj = Instantiate(projectilePrefab, castPoint.position, Quaternion.identity);
-        proj.transform.forward = direction;
         proj.transform.rotation = Quaternion.LookRotation(direction);
 
         var projectile = proj.GetComponent<Projectile>();
-        projectile.Init(speed, damage, playerMana, HitRegenMana, manaRegenAmount);
+        projectile.Init(speed);
+
+        // abonnement à l'event
+        projectile.OnHitEvent += (hit) =>
+        {
+            OnHit(hit);
+        };
     }
+
+    void OnHit(RaycastHit hit)
+    {
+        bool enemyHit = false;
+
+        IDamageable damageable = hit.collider.GetComponent<IDamageable>();
+        if (damageable != null)
+        {
+            damageable.TakeDamage(damage);
+            if (hit.collider.CompareTag("Enemy"))
+            {
+                enemyHit = true;
+            }
+        }
+
+        Instantiate(hitVfx, hit.point, Quaternion.identity);
+
+        if (enemyHit)
+        {
+            if (HitRegenMana && playerMana != null)
+            {
+                playerMana.RegenerateMana(manaRegenAmount);
+            }
+
+            ShowDamage(hit.point, damage);
+
+        } 
+    }
+
+    void ShowDamage(Vector3 worldPosition, float damageAmount)
+    {
+        if(damagePopupPrefab == null) return;
+        GameObject popup = Instantiate(damagePopupPrefab, worldPosition, Quaternion.identity);
+        popup.GetComponent<DamagePopup>().Setup(damage);
+    }
+
 }
