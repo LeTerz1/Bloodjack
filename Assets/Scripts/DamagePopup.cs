@@ -36,7 +36,7 @@ public class DamagePopup : MonoBehaviour
         if (timer >= lifeTime)
             Destroy(gameObject);
 
-        //UpdateScale();
+        UpdateScale();
     }
 
     private void LateUpdate()
