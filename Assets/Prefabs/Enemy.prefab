@@ -194,6 +194,7 @@ GameObject:
   - component: {fileID: 293104576434253012}
   - component: {fileID: 6527721067052929534}
   - component: {fileID: 4694977795374418570}
+  - component: {fileID: 1231677039427176271}
   m_Layer: 3
   m_Name: Enemy
   m_TagString: Enemy
@@ -267,6 +268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   updateRate: 0.2
+  firstDetection: 0
   detectionRange: 10
   visionRange: 25
   visionAngle: 90
@@ -296,3 +298,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1231677039427176271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8788935624347826304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 553ea2093655c3a4b9c9f7151af62b70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMeleeAttack
+  attackRange: 2
+  stoppingDistance: 1.5
+  attackCooldown: 1.5
+  damage: 10

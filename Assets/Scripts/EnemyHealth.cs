@@ -15,11 +15,18 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         currentHealth -= amount;
 
         Debug.Log("PV restants : " + currentHealth);
+        EnemyMovement enemyMovement = GetComponent<EnemyMovement>();
+        if (enemyMovement != null)
+        {
+            //enemyMovement.firstDetection = true;
+        }
+
 
         if (currentHealth <= 0)
         {
             Die();
         }
+
     }
 
     void Die()
