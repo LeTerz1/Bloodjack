@@ -41,7 +41,7 @@ public class EnemyMeleeAttack : MonoBehaviour
     {
         if (player == null) return;
 
-        //if (!enemyMovement.firstDetection) return;
+        if (!enemyMovement.firstDetection) return;
 
         float sqrDistance = (player.position - transform.position).sqrMagnitude;
         if (sqrDistance <= sqrAttackRange)

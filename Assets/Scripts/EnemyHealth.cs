@@ -18,7 +18,8 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         EnemyMovement enemyMovement = GetComponent<EnemyMovement>();
         if (enemyMovement != null)
         {
-            //enemyMovement.firstDetection = true;
+            enemyMovement.firstDetection = true;
+            enemyMovement.AlertNearbyEnemies();
         }
 
 

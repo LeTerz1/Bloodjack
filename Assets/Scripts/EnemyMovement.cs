@@ -43,7 +43,7 @@ public class EnemyMovement : MonoBehaviour
         sqrVisionRange = visionRange * visionRange;
     }
 
-    private bool firstDetection = false;
+    public bool firstDetection = false;
     void Update()
     {
         if (player == null) return;
@@ -54,6 +54,7 @@ public class EnemyMovement : MonoBehaviour
             if (DetectionPlayer())
             {
                 firstDetection = true;
+                AlertNearbyEnemies();
             }
             else
             {
@@ -113,6 +114,21 @@ public class EnemyMovement : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void AlertNearbyEnemies()
+    {
+        Collider[] hits = Physics.OverlapSphere(transform.position, detectionRange, LayerMask.GetMask("Enemy"));
+
+        foreach (Collider hit in hits)
+        {
+            EnemyMovement enemy = hit.GetComponent<EnemyMovement>();
+
+            if (enemy != null && !enemy.firstDetection)
+            {
+                enemy.firstDetection = true;
+            }
+        }
     }
 
     void OnDrawGizmosSelected()
