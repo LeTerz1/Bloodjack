@@ -15,6 +15,8 @@ public class EnemyMeleeAttack : MonoBehaviour
     private float attackTimer;
     private float sqrAttackRange;
 
+    public ParticleSystem attackVFX;
+
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -65,11 +67,8 @@ public class EnemyMeleeAttack : MonoBehaviour
         {
             attackTimer = 0f;
 
-            // Infliger dégâts
-            Debug.Log("Attaque !");
-
-            // Exemple :
-            // player.GetComponent<PlayerHealth>().TakeDamage(damage);
+            player.GetComponent<PlayerHealth>().TakeDamage(damage);
+            attackVFX.Play();
         }
     }
 }

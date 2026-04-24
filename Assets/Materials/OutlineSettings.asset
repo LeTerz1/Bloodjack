@@ -23,19 +23,19 @@ MonoBehaviour:
   renderQueue: 0
   occlusion: 0
   maskingStrategy: 0
-  color: {r: 1, g: 0.027895728, b: 0, a: 1}
+  color: {r: 1.1486983, g: 0, b: 0.102240175, a: 1}
   enableOcclusion: 0
   occludedColor: {r: 1, g: 0, b: 0, a: 1}
   blendMode: 0
   extrusionMethod: 4
   scaling: 0
-  width: 5
+  width: 3
   minWidth: 5
   scaleWithResolution: 0
   referenceResolution: 0
   customResolution: 0
   materialType: 0
-  customMaterial: {fileID: 0}
+  customMaterial: {fileID: 2100000, guid: 759e9a6b4deafa84c996975681b27fc2, type: 2}
 --- !u!114 &-2871989578668420718
 MonoBehaviour:
   m_ObjectHideFlags: 0
