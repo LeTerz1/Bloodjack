@@ -4,8 +4,9 @@ using System.Collections;
 
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
-    public float maxHealth = 100;
-    private float currentHealth;
+    public float max = 100;
+    private float current;
+    public Image fillImage;
 
     [Header("Damage Feedback")]
     public RawImage bloodScreen;
@@ -15,16 +16,26 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     void Start()
     {
-        currentHealth = maxHealth;
+        current = max;
+    }
+
+    void Update()
+    {
+        UIupdate();
+    }
+
+    void UIupdate()
+    {
+        fillImage.fillAmount = current / max;
     }
 
     public void TakeDamage(float amount)
     {
-        currentHealth -= amount;
+        current -= amount;
 
         TriggerBloodEffect();
 
-        if (currentHealth <= 0)
+        if (current <= 0)
         {
             Die();
         }
