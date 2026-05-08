@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b72189e8587443c4fb164318a545ffe9, type: 3}
+  m_Name: ConeSpell
+  m_EditorClassIdentifier: Assembly-CSharp::ConeSpell
+  spellName: 
+  castMode: 0
+  manaCost: 20
+  cooldown: 0
+  HitRegenMana: 0
+  manaRegenAmount: 0
+  damagePopupPrefab: {fileID: 5602722220919986577, guid: 5a3e082428d610744bbf75af8207874f, type: 3}
+  damage: 20
+  secondaryDamage: 10
+  range: 10
+  angle: 45
+  chainRadius: 5
+  chainDelay: 0.2
+  maxChains: 3
+  linePrefab: {fileID: 3860109314786484703, guid: 3aa0ab959ec4e8642ac06b36999063e0, type: 3}
+  lineDuration: 0.6
+  hitEffectPrefab: {fileID: 7900340084551851770, guid: e614e772a16eda94690ba8ffd4ad91cc, type: 3}
+  electricSpray: {fileID: 1557635289131833114, guid: 111aa59b99a1b894a8f0f91ef85dc6da, type: 3}

@@ -14,14 +14,21 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public float fadeDuration = 0.5f;
     private Coroutine damageScreenCoroutine;
 
+    [Header("Regeneration")]
+    public float regenDelay = 5f;        // temps sans dégâts avant regen
+    public float regenAmount = 10f;        // HP par seconde
+    private float lastDamageTime;
+
+
     void Start()
     {
         current = max;
+        UIupdate();
     }
 
     void Update()
     {
-        UIupdate();
+        HandleRegen();
     }
 
     void UIupdate()
@@ -32,8 +39,12 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public void TakeDamage(float amount)
     {
         current -= amount;
+        current = Mathf.Clamp(current, 0, max);
+
+        lastDamageTime = Time.time; // reset timer regen
 
         TriggerBloodEffect();
+        UIupdate();
 
         if (current <= 0)
         {
@@ -48,6 +59,17 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         // Implémentez la logique de mort du joueur ici (ex: recharger la scène, afficher un écran de game over, etc.)
     }
 
+    void HandleRegen()
+    {
+        // si assez de temps sans dégâts
+        if (Time.time - lastDamageTime >= regenDelay && current < max)
+        {
+            current += regenAmount * Time.deltaTime;
+            current = Mathf.Clamp(current, 0, max);
+
+            UIupdate();
+        }
+    }
 
     void TriggerBloodEffect()
     {

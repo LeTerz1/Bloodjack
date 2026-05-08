@@ -108,7 +108,7 @@ Material:
     - _Cutoff: 0.5
     - _DepthFade: 0
     - _DetailNormalMapScale: 1
-    - _DistortionAmount: 0.1
+    - _DistortionAmount: 0.01
     - _DistortionMaskIntensity: 1
     - _Distortion_Amount: 0
     - _Dst: 10
@@ -174,8 +174,9 @@ Material:
     - _ErosionUVScale: {r: 0.1, g: 0.3, b: 0, a: 0}
     - _Erosion_Scale: {r: 0.5, g: 0.5, b: 0, a: 0}
     - _Erosion_Speed: {r: 0.25, g: 0, b: 0, a: 0}
-    - _MaskPanSpeed: {r: -1.15, g: 0, b: 0, a: 0}
+    - _MaskPanSpeed: {r: -3.13, g: 0, b: 0, a: 0}
     - _MaskUVScale: {r: 0.1, g: 1, b: 0, a: 0}
     - _Mask_Scale: {r: 0.5, g: 1, b: 0, a: 0}
     - _Mask_Speed: {r: 0.5, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1
