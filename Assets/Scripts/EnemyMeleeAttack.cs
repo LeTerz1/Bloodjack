@@ -67,7 +67,7 @@ public class EnemyMeleeAttack : MonoBehaviour
         {
             attackTimer = 0f;
 
-            player.GetComponent<PlayerHealth>().TakeDamage(damage);
+            player.GetComponent<PlayerHealth>().TakeDamage(damage, Vector3.zero);
             attackVFX.Play();
         }
     }

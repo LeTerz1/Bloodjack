@@ -36,7 +36,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         fillImage.fillAmount = current / max;
     }
 
-    public void TakeDamage(float amount)
+    public void TakeDamage(float amount, Vector3 hitPoint)
     {
         current -= amount;
         current = Mathf.Clamp(current, 0, max);

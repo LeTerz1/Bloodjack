@@ -93,7 +93,7 @@ public class ConeSpellBehaviour : MonoBehaviour
             IDamageable dmg = nextTarget.GetComponent<IDamageable>();
             if (dmg != null)
             {
-                dmg.TakeDamage(coneSpell.secondaryDamage);
+                dmg.TakeDamage(coneSpell.secondaryDamage, nextPosition);
             }
 
             yield return ChainDamage(nextPosition, chainIndex + 1, hitTargets);

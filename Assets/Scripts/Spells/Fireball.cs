@@ -38,7 +38,7 @@ public class Fireball : Spell
         IDamageable damageable = hit.collider.GetComponent<IDamageable>();
         if (damageable != null)
         {
-            damageable.TakeDamage(damage);
+            damageable.TakeDamage(damage, hit.point);
             if (hit.collider.CompareTag("Enemy"))
             {
                 enemyHit = true;
@@ -53,17 +53,7 @@ public class Fireball : Spell
             {
                 playerMana.RegenerateMana(manaRegenAmount);
             }
-
-            ShowDamage(hit.point, damage);
-
         } 
-    }
-
-    void ShowDamage(Vector3 worldPosition, float damageAmount)
-    {
-        if(damagePopupPrefab == null) return;
-        GameObject popup = Instantiate(damagePopupPrefab, worldPosition, Quaternion.identity);
-        popup.GetComponent<DamagePopup>().Setup(damage);
     }
 
 }

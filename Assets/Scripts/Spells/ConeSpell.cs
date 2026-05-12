@@ -53,7 +53,7 @@ public class ConeSpell : Spell
             IDamageable dmg = bestTarget.GetComponent<IDamageable>();
             if (dmg != null)
             {
-                dmg.TakeDamage(damage);
+                dmg.TakeDamage(damage, targetPosition);
 
                 ConeSpellBehaviour coneSpellBehaviour = castPoint.GetComponentInParent<ConeSpellBehaviour>();
 

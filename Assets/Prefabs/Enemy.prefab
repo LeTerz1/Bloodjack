@@ -256,6 +256,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   maxHealth: 100
   enemyName: Capsule
+  damagePopupPrefab: {fileID: 5602722220919986577, guid: 5a3e082428d610744bbf75af8207874f, type: 3}
+  hitMaterial: {fileID: 2100000, guid: e647c6e1a878bd44abf5f1cbca5d1b3c, type: 2}
+  flashDuration: 0.15
 --- !u!114 &6527721067052929534
 MonoBehaviour:
   m_ObjectHideFlags: 0
