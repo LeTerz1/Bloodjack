@@ -74,7 +74,7 @@ public class EnemyMovement : MonoBehaviour
 
     bool DetectionPlayer()
     {
-        Vector3 directionToPlayer = player.position - transform.position;
+        Vector3 directionToPlayer = player.position+Vector3.up*0.6f - transform.position;
         float sqrDistance = directionToPlayer.sqrMagnitude;
 
         bool inDetectionRange = sqrDistance <= sqrDetectionRange;
@@ -98,7 +98,7 @@ public class EnemyMovement : MonoBehaviour
 
         return angle <= visionAngle * 0.5f;
     }
-    bool HasLineOfSight(Vector3 directionToPlayer)
+    public bool HasLineOfSight(Vector3 directionToPlayer)
     {
         Vector3 origin = transform.position + Vector3.up * hauteurRayonDetection;
 

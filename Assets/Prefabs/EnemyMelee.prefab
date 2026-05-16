@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 1231677039427176271}
   - component: {fileID: 4694977795374418570}
   m_Layer: 3
-  m_Name: Enemy
+  m_Name: EnemyMelee
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -255,7 +255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   maxHealth: 100
-  enemyName: Capsule
+  enemyName: Guerrier
   damagePopupPrefab: {fileID: 5602722220919986577, guid: 5a3e082428d610744bbf75af8207874f, type: 3}
   hitMaterial: {fileID: 2100000, guid: e647c6e1a878bd44abf5f1cbca5d1b3c, type: 2}
   flashDuration: 0.15
