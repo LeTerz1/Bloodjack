@@ -15,7 +15,7 @@ MonoBehaviour:
   spellName: 
   castMode: 0
   manaCost: 20
-  cooldown: 0
+  cooldown: 0.5
   HitRegenMana: 0
   manaRegenAmount: 0
   damagePopupPrefab: {fileID: 5602722220919986577, guid: 5a3e082428d610744bbf75af8207874f, type: 3}

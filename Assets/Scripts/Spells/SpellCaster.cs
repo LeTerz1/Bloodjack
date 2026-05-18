@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class SpellCaster : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class SpellCaster : MonoBehaviour
 
     public Transform castPoint;
     public Camera playerCamera;
+
+    public Image[] cooldownImages;
 
     private PlayerInputActions controls;
 
@@ -60,6 +63,15 @@ public class SpellCaster : MonoBehaviour
             if (isHolding[i])
             {
                 TryCast(i);
+            }
+        }
+
+        // Update cooldown UI
+        for (int i = 0; i < cooldownImages.Length; i++)
+        {
+            if (i < cooldownTimers.Length)
+            {
+                cooldownImages[i].fillAmount = 0 + (cooldownTimers[i] / spellSlots[i].cooldown);
             }
         }
     }
