@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -16,6 +17,7 @@ public class SpellCaster : MonoBehaviour
     public Camera playerCamera;
 
     public Image[] cooldownImages;
+    public TextMeshProUGUI[] manaCostText;
 
     private PlayerInputActions controls;
 
@@ -46,6 +48,15 @@ public class SpellCaster : MonoBehaviour
     {
         cooldownTimers = new float[spellSlots.Length];
         isHolding = new bool[spellSlots.Length];
+
+        // Initialize mana cost text
+        for (int i = 0; i < manaCostText.Length; i++)
+        {
+            if (i < spellSlots.Length && spellSlots[i] != null)
+            {
+                manaCostText[i].text = spellSlots[i].manaCost.ToString();
+            }
+        }
     }
 
     void Update()

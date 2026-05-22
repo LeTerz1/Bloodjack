@@ -6,7 +6,7 @@ public class BossPattern : MonoBehaviour
 
     private void Start()
     {
-        ChangeState(BossState.Idle);
+        ChangeState(BossState.Projectiles);
     }
 
     public void ChangeState(BossState newState)
@@ -21,7 +21,8 @@ public class BossPattern : MonoBehaviour
             case BossState.Move:
                 break;
 
-            case BossState.Attack1:
+            case BossState.Projectiles:
+                GetComponent<BossProjectiles>().SpawnProjectiles();
                 break;
         }
     }
@@ -32,5 +33,5 @@ public enum BossState
 {
     Idle,
     Move,
-    Attack1,
+    Projectiles,
 }

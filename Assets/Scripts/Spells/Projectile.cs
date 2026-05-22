@@ -4,6 +4,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     private float speed;
+    public bool launchAtStart = true;
 
     public event Action<RaycastHit> OnHitEvent;
 
@@ -21,6 +22,8 @@ public class Projectile : MonoBehaviour
 
     void Update()
     {
+        if (launchAtStart == false)
+            return;
         Vector3 movement = transform.forward * speed * Time.deltaTime;
 
         if (Physics.Raycast(previousPosition, movement.normalized, out RaycastHit hit, movement.magnitude))
