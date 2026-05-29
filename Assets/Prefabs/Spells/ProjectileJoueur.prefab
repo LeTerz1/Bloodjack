@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 123585709583877445}
   - component: {fileID: 8455442527005030274}
   m_Layer: 2
-  m_Name: BlueFireProjectile
+  m_Name: ProjectileJoueur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

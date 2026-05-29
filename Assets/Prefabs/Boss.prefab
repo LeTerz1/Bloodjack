@@ -464,7 +464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2471ebd76acde1a48a0645e5fd2c13b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossProjectiles
-  projectilePrefab: {fileID: 6608794748350677980, guid: cb974bc6cdff35547b51fa0757b89de8, type: 3}
+  projectilePrefab: {fileID: 6608794748350677980, guid: 82a3d9561fc8a464eb5262eb7134452e, type: 3}
   projectileSpeed: 20
   damage: 10
   projectilesPos:
