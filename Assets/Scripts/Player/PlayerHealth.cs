@@ -19,6 +19,9 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public float regenAmount = 10f;        // HP par seconde
     private float lastDamageTime;
 
+    [Header("Death")]
+    public RawImage deathScreen;
+    private bool isDead = false;
 
     void Start()
     {
@@ -46,9 +49,11 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         TriggerBloodEffect();
         UIupdate();
 
-        if (current <= 0)
+        if (current <= 0 && !isDead)
         {
+            isDead = true;
             Die();
+
         }
 
     }
@@ -56,7 +61,31 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     void Die()
     {
         Debug.Log("Player mort");
-        // Implémentez la logique de mort du joueur ici (ex: recharger la scène, afficher un écran de game over, etc.)
+        StartCoroutine(DeathScreen());
+    }
+
+    IEnumerator DeathScreen()
+    {
+        // fade in
+        float t = 0f;
+        while (t < 0.5f)
+        {
+            t += Time.deltaTime;
+            float alpha = Mathf.Lerp(0f, 1f, t / 0.5f);
+            Color c = deathScreen.color;
+            c.a = alpha;
+            deathScreen.color = c;
+            yield return null;
+        }
+        // reste à 1
+        Color finalColor = deathScreen.color;
+        finalColor.a = 1f;
+        deathScreen.color = finalColor;
+
+        yield return new WaitForSeconds(1f);
+        // reload scene
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+
     }
 
     void HandleRegen()
@@ -104,4 +133,5 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         c.a = a;
         bloodScreen.color = c;
     }
+
 }

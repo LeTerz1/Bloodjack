@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76891cd4d8786b544986c60e1d783b67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 100
+  maxHealth: 80
   enemyName: Archer
   damagePopupPrefab: {fileID: 5602722220919986577, guid: 5a3e082428d610744bbf75af8207874f, type: 3}
   hitMaterial: {fileID: 2100000, guid: e647c6e1a878bd44abf5f1cbca5d1b3c, type: 2}
@@ -289,7 +289,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: -1372625422
   m_Radius: 1
-  m_Speed: 3.5
+  m_Speed: 7
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -315,6 +315,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyRangedAttack
   retreatDistance: 10
   attackCooldown: 2
-  damage: 10
+  damage: 20
   projectilePrefab: {fileID: 6608794748350677980, guid: 82a3d9561fc8a464eb5262eb7134452e, type: 3}
   speed: 40

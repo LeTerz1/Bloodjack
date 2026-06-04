@@ -4,11 +4,6 @@ public class BossPattern : MonoBehaviour
 {
     public BossState currentState;
 
-    private void Start()
-    {
-        ChangeState(BossState.Projectiles);
-    }
-
     public void ChangeState(BossState newState)
     {
         currentState = newState;
