@@ -26,6 +26,10 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     void Start()
     {
         current = max;
+        if (Checkpoint.hasCheckpoint)
+        {
+            transform.position = Checkpoint.respawnPosition;
+        }
         UIupdate();
     }
 

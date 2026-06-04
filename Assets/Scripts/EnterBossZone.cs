@@ -19,8 +19,15 @@ public class EnterBossZone : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Checkpoint.hasCheckpoint = true;
+            Checkpoint.respawnPosition = transform.position;
+            Checkpoint.bossFightStarted = true;
+
             other.transform.position = transform.position;
+
             bossPattern.ChangeState(BossState.Move);
+
+            gameObject.SetActive(false);
         }
     }
 }

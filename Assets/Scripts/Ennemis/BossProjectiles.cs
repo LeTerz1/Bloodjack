@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 
 public class BossProjectiles : MonoBehaviour
 {
     private Transform player;
+    public Transform projectilesAnchor;
+    private float timer;
     [Header("Projectile")]
     public GameObject projectilePrefab;
     private List<Projectile> spawnedProjectiles = new();
@@ -37,7 +40,7 @@ public class BossProjectiles : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        projectilesAnchor.transform.LookAt(player.position);
     }
 
     public void SpawnProjectiles()
@@ -67,7 +70,7 @@ public class BossProjectiles : MonoBehaviour
         {
             projectile.launchAtStart = true;
             projectile.Init(projectileSpeed);
-            Vector3 direction = (player.position + Vector3.up * 0.6f - projectile.transform.position).normalized;
+            Vector3 direction = (player.position + Vector3.up * 0.3f - projectile.transform.position).normalized;
             projectile.transform.rotation = Quaternion.LookRotation(direction);
             projectile.OnHitEvent += (hit) =>
             {

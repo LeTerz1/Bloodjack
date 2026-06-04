@@ -35,6 +35,10 @@ public class EnemyMovement : MonoBehaviour
         {
             Debug.LogError("Aucun objet avec le tag 'Player' trouvé !");
         }
+        if (Checkpoint.bossFightStarted)
+        {
+            firstDetection = true;
+        }
     }
 
     void Start()
